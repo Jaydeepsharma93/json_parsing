@@ -13,10 +13,14 @@ class JsonProvider extends ChangeNotifier {
   }
 
   Future<void> jsoncheking() async {
-    String? jsonString = await rootBundle.loadString('assets/json/jsondata.json');
+    String? jsonString =
+        await rootBundle.loadString('assets/json/jsondata.json');
     dataList = jsonDecode(jsonString);
-    objectList = dataList.map((e) => JsonData.fromJson(e),).toList();
+    objectList = dataList
+        .map(
+          (e) => JsonData.fromJson(e),
+        )
+        .toList();
     notifyListeners();
   }
 }
-
