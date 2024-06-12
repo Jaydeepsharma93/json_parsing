@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:json_parsing/json_exam/jsonparse.dart';
 
 class JsonProvider extends ChangeNotifier {
-  List dataList = [];
+  List dataList = []; // Specify the type of dataList
   List<JsonData> objectList = [];
 
   JsonProvider() {
@@ -13,14 +13,10 @@ class JsonProvider extends ChangeNotifier {
   }
 
   Future<void> jsoncheking() async {
-    String? json = await rootBundle.loadString('assets/json/jsondata.json');
-    dataList = jsonDecode(json);
-
-    objectList = dataList
-        .map(
-          (e) => JsonData.fromJson(e),
-        )
-        .toList();
+    String? jsonString = await rootBundle.loadString('assets/json/jsondata.json');
+    dataList = jsonDecode(jsonString);
+    objectList = dataList.map((e) => JsonData.fromJson(e),).toList();
     notifyListeners();
   }
 }
+

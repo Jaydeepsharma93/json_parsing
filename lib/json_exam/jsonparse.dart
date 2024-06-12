@@ -20,7 +20,7 @@ class JsonData {
 class PostsModal {
   int? id, views, userId;
   String? title, body;
-  List? tags;
+  List<String>? tags;
   Reactions? reactions;
 
   PostsModal({
@@ -34,13 +34,15 @@ class PostsModal {
   });
 
   factory PostsModal.fromJson(Map json) {
+    List<dynamic>? jsonTags = json['tags'];
+    List<String>? tags = jsonTags?.map((tag) => tag.toString()).toList();
     return PostsModal(
         id: json['id'],
         views: json['views'],
         userId: json['userId'],
         title: json['title'],
         body: json['body'],
-        tags: json['tags'],
+        tags: tags,
         reactions: Reactions.fromJson(json['reactions']));
   }
 }

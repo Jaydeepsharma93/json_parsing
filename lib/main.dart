@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:json_parsing/checking_files.dart';
 import 'package:json_parsing/json_exam/provider.dart';
+import 'package:json_parsing/json_exam/view.dart';
 import 'package:json_parsing/provider_parsing.dart';
 import 'package:provider/provider.dart';
 
@@ -22,7 +22,8 @@ class Checking extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyApp(),
+      debugShowCheckedModeBanner: false,
+      home: ViewScreen(),
     );
   }
 }
